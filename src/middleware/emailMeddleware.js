@@ -18,7 +18,7 @@ exports.emilMiddleware =(req , res , next)=>{
 
     try {
         const decoded = jwt.verify(token , process.env.JWT_SECRET)
-        req.userId = decoded._id
+        req.userId = decoded._id || decoded.id || decoded.userId;
         req.userEmail = decoded.email
         next()
     } catch (error) {

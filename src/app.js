@@ -27,7 +27,7 @@ app.use(express.json());
 app.use(
     "/uploads/products",
     express.static(
-        path.join(__dirname, "uploads/products")
+        path.join(__dirname, "../uploads/products")
     )
 );
 
