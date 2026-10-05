@@ -2,6 +2,7 @@
 
 
 
+
 const jwt = require("jsonwebtoken");
 const dotEnv = require("dotenv");
 
@@ -27,7 +28,8 @@ exports.emilMiddleware = (req, res, next) => {
         req.userId =
             decoded._id ||
             decoded.id ||
-            decoded.userId;
+            decoded.userId ||
+            decoded.adminId;
 
         req.userEmail = decoded.email;
 
