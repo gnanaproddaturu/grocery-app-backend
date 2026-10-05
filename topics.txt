@@ -1,0 +1,15 @@
+
+
+
+packages
+--------------
+
+
+express
+nodemon
+mongoose
+dotenv
+bcrypt
+jsonwebtoken
+cors
+multer
