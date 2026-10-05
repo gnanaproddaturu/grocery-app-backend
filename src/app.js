@@ -1,20 +1,17 @@
 
 
-const exprss = require("express")
-const productRoutes = require("./routes/productRoutes")
-const path = require("path")
-const adminRouters = require("./routes/adminRoutes")
-const emailRouters = require("./routes/emilRoutes")
-const cartRouters = require("./routes/cartRoutes")
+
+const express = require("express");
 const cors = require("cors");
+const path = require("path");
 
-const app = exprss()
+const productRoutes = require("./routes/productRoutes");
+const adminRoutes = require("./routes/adminRoutes");
+const emailRoutes = require("./routes/emilRoutes");
+const cartRoutes = require("./routes/cartRoutes");
 
+const app = express();
 
-
-
-
- app.use(exprss.json())
 app.use(
     cors({
         origin: [
@@ -27,26 +24,25 @@ app.use(
 
 app.use(express.json());
 
- app.use("/uploads/products",exprss.static(path.join(__dirname,"uploads/products")))
- app.use("/api" , productRoutes)
- app.use("/admin",adminRouters)
- app.use("/email" , emailRouters)
- app.use("/cart" , cartRouters)
- 
+app.use(
+    "/uploads/products",
+    express.static(
+        path.join(__dirname, "uploads/products")
+    )
+);
 
- 
- app.get("/" ,(req,res)=>{
+app.use("/api", productRoutes);
+
+app.use("/admin", adminRoutes);
+
+app.use("/email", emailRoutes);
+
+app.use("/cart", cartRoutes);
+
+app.get("/", (req, res) => {
     res.json({
-        message : "app run here"
-    })
- })
- 
+        message: "app run here",
+    });
+});
 
-
-
-
-module.exports=app
-
-
-//Se1LeqvffQ10NT5x
-//gnanaproddaturu_db_user
+module.exports = app;
